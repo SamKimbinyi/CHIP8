@@ -5,5 +5,6 @@ private:
 public:
 	byte getData(short address);
 	void setData(short address, byte data);
+	void testData();
 };
 

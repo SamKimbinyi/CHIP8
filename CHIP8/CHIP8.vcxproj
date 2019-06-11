@@ -116,13 +116,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Byte.h" />
+    <ClInclude Include="CDebug.h" />
     <ClInclude Include="Chip8.h" />
+    <ClInclude Include="GPU.h" />
     <ClInclude Include="Instructions.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Register.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CDebug.cpp" />
     <ClCompile Include="Chip8.cpp" />
+    <ClCompile Include="GPU.cpp" />
     <ClCompile Include="Instructions.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Register.cpp" />

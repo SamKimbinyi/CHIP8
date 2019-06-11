@@ -3,6 +3,7 @@
 class Register
 {
 public:
+	Register();
 	byte V[16] = {};
 	short I;
 	short PC;

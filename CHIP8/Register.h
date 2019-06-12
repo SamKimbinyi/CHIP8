@@ -4,12 +4,21 @@ class Register
 {
 public:
 	Register();
+
+	byte stack[64] = {};
+	//General Purpose Registers
 	byte V[16] = {};
+	//Instruction Register
 	short I;
-	short PC;
-	byte SP;
-	byte DT;
-	byte ST;
+	//Program Counters
+	short programCounter;
+
+	//Stack Pointer
+	byte stackPointer;
+	//Delay Timer
+	byte delayTimer;
+	//Sound timer
+	byte soundTimer;
 
 
 

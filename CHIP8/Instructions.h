@@ -27,7 +27,7 @@ public:
 	
 
 	//2NNN	Execute subroutine starting at address NNN
-	 void executeSub(); 
+	 void executeSub(short address); 
 	
 
 	//3XNN	Skip the following instruction if the value of register VX equals NN

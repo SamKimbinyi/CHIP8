@@ -5,9 +5,9 @@
 Register::Register()
 {
 	I = 0x0;
-	PC = 0x0;
-	SP = 0x0;
-	DT = 0x0;
-	ST = 0x0;
+	programCounter = 0x0;
+	stackPointer = 0x0;
+	delayTimer= 0x0;
+	soundTimer = 0x0;
 
 }

@@ -22,7 +22,7 @@ int main() {
 
 	short instruction = fetch(0X00);
 	CDebug::output(instruction);
-	_instructions.jump();
+	//_instructions.jump();
 
 	
 	

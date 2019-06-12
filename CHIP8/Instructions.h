@@ -1,6 +1,7 @@
 #pragma once
 #include "Memory.h"
 #include "Register.h"
+
 class Instructions{
 
 private:

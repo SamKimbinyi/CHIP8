@@ -31,78 +31,78 @@ public:
 	
 
 	//3XNN	Skip the following instruction if the value of register VX equals NN
-	 void skipIfConstEqual(); 
+	 void skipIfConstEqual(byte constant, byte reg); 
 	
 
 	//4XNN	Skip the following instruction if the value of register VX is not equal to NN
-	 void skipIfNotEqual(); 
+	 void skipIfNotEqual(byte constant, byte reg); 
 	
 
 	//5XY0	Skip the following instruction if the value of register VX is equal to the value of register VY
-	 void skipIfEqual(); 
+	 void skipIfEqual(byte constant, byte reg); 
 	
 
 	//6XNN	Store number NN in register VX
-	 void storeConst(); 
+	 void storeConst(byte constant, byte reg); 
 	
 
 	//7XNN	Add the value NN to register VX
-	 void addConst(); 
+	 void addConst(byte constant, byte reg); 
 	
 
 	//8XY0	Store the value of register VY in register VX
-	 void store(); 
+	 void store(byte regSource, byte regDestination); 
 	
 
 	//8XY1	Set VX to VX OR VY
-	 void AND(); 
+	 void AND(byte regSource, byte regDestination);
 	
 
 	//8XY2	Set VX to VX AND VY
-	 void OR(); 
+	 void OR(byte regSource, byte regDestination);
 	
 	//8XY3	Set VX to VX XOR VY
 
-	 void XOR(); 
+	 void XOR(byte regSource, byte regDestination);
 	
 
 	//8XY4	Add the value of register VY to register VX
 	//Set VF to 01 if a carry occurs
 	//Set VF to 00 if a carry does not occur
 
-	 void addReg(); 
+	 void addReg(byte regSource, byte regDestination);
 	
 
 	//8XY5	Subtract the value of register VY from register VX
 	//Set VF to 00 if a borrow occurs
 	//Set VF to 01 if a borrow does not occur
 
-	 void subReg(); 
+	 void subReg(byte regSource, byte regDestination);
 	
 
 	//8XY6	Store the value of register VY shifted right one bit in register VX
 	//Set register VF to the least significant bit prior to the shift
 
 
-	 void shiftRight(); 
+	 void shiftRight(byte reg); 
 	
 
 	//8XY7	Set register VX to the value of VY minus VX
 	//Set VF to 00 if a borrow occurs
 	//Set VF to 01 if a borrow does not occur
 
-	 void subRegStore(); 
+	 void subRegStore(byte regSource, byte regDestination);
 	
 
 	//8XYE	Store the value of register VY shifted left one bit in register VX
 	//Set register VF to the most significant bit prior to the shift
 
-	 void shiftLeft(); 
+	 void shiftLeft(byte reg);
 	
 
 	//9XY0	Skip the following instruction if the value of register VX is not equal to the value of register VY
 
-	 void skipNotEqualReg(); 
+	 void skipNotEqualReg(byte regSource, byte regDestinatione);
 	
 
 	//ANNN	Store memory address NNN in register I
@@ -113,11 +113,11 @@ public:
 
 	//BNNN	Jump to address NNN + V0
 
-	 void jumpAdd(); 
+	 void jumpAdd(byte constant); 
 	
 	//CXNN	Set VX to a random number with a mask of NN
 
-	 void random(); 
+	 void random(byte reg); 
 	
 
 	//DXYN	Draw a sprite at position VX, VY with N bytes of sprite data starting at the address stored in I
@@ -150,17 +150,17 @@ public:
 
 	//FX15	Set the delay timer to the value of register VX
 
-	 void setDelay(); 
+	 void setDelay(byte reg); 
 	
 
 	//FX18	Set the sound timer to the value of register VX
 
-	 void setTimer(); 
+	 void setTimer(byte reg); 
 	
 
 	//FX1E	Add the value stored in register VX to register I
 
-	 void addToI(); 
+	 void addToI(byte reg); 
 	
 
 	//FX29	Set I to the memory address of the sprite data corresponding to the hexadecimal digit stored in register VX

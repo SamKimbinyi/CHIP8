@@ -37,12 +37,19 @@ Instructions::Instructions(Memory* chip8Memory,  Register* chip8Registers) {
 
 	//2NNN	Execute subroutine starting at address NNN
 	  void Instructions::executeSub(short address) {
+		  _register->stack[_register->stackPointer] = _register->programCounter;
+		  _register->stackPointer++;
+		  _register->programCounter = address;
 
 	}
 
 	//3XNN	Skip the following instruction if the value of register VX equals NN
 	  void Instructions::skipIfConstEqual() {
-	}
+
+		  if (_register->vx == _register->vy) {
+
+		  }
+	  }	
 
 	//4XNN	Skip the following instruction if the value of register VX is not equal to NN
 	  void Instructions::skipIfNotEqual() {

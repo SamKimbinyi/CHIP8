@@ -6,8 +6,8 @@
 #include "CDebug.h"
 #include "Instructions.h"
 
-Memory* _memory = new Memory();
-Register* _register = new Register();
+Memory *_memory = new Memory();
+Register *_register = new Register();
 
 
 Instructions _instructions(_memory, _register);

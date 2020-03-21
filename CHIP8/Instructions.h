@@ -35,7 +35,7 @@ public:
 	
 
 	//4XNN	Skip the following instruction if the value of register VX is not equal to NN
-	 void skipIfNotEqual(byte constant, byte reg); 
+	 void skipIfConstNotEqual(byte constant, byte reg); 
 	
 
 	//5XY0	Skip the following instruction if the value of register VX is equal to the value of register VY

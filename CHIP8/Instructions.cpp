@@ -44,82 +44,100 @@ Instructions::Instructions(Memory* chip8Memory,  Register* chip8Registers) {
 	}
 
 	//3XNN	Skip the following instruction if the value of register VX equals NN
-	  void Instructions::skipIfConstEqual() {
-
-		  if (_register->vx == _register->vy) {
-
+	  void Instructions::skipIfConstEqual(byte constant, byte reg) {
+		  if (_register->V[reg] == constant) {
+			  _register->programCounter += 0x2;
 		  }
 	  }	
 
 	//4XNN	Skip the following instruction if the value of register VX is not equal to NN
-	  void Instructions::skipIfNotEqual() {
+	  void Instructions::skipIfConstNotEqual(byte constant, byte reg) {
+		  if (_register->V[reg] != constant) {
+			  _register->programCounter += 0x2;
+		  }
 	}
 
 	//5XY0	Skip the following instruction if the value of register VX is equal to the value of register VY
-	  void Instructions::skipIfEqual() {
+	  void Instructions::skipIfEqual(byte reg1, byte reg2) {
+		  if (_register->V[reg1] == _register->V[reg2]) {
+			  _register->programCounter += 0x2;
+		  }
 	}
 
 	//6XNN	Store number NN in register VX
-	  void Instructions::storeConst() {
+	  void Instructions::storeConst(byte constant, byte reg) {
+		  _register->V[reg] = constant;
 	}
 
 	//7XNN	Add the value NN to register VX
-	  void Instructions::addConst() {
+	  void Instructions::addConst(byte constant, byte reg) {
+		  _register->V[reg] += constant;
 	}
 
 	//8XY0	Store the value of register VY in register VX
-	  void Instructions::store() {
+	  void Instructions::store(byte regSource, byte regDestination) {
+		  _register->V[regDestination] = _register->V[regSource];
+
 	}
 
-	//8XY1	Set VX to VX OR VY
-	  void Instructions::AND() {
+	//8XY1	Set VX to VX AND VY
+	  void Instructions::AND(byte regSource, byte regDestination) {
+		  _register->V[regDestination] = _register->V[regDestination] & _register->V[regSource];
+
 	}
 
-	//8XY2	Set VX to VX AND VY
-	  void Instructions::OR() {
+	//8XY2	Set VX to VX OR VY
+	  void Instructions::OR(byte regSource, byte regDestination) {
+		  _register->V[regDestination] = _register->V[regDestination] | _register->V[regSource];
 	}
 	//8XY3	Set VX to VX XOR VY
 
-	  void Instructions::XOR() {
+	  void Instructions::XOR(byte regSource, byte regDestination) {
+		  _register->V[regDestination] = _register->V[regDestination] ^ _register->V[regSource];
+
 	}
 
 	//8XY4	Add the value of register VY to register VX
 	//Set VF to 01 if a carry occurs
 	//Set VF to 00 if a carry does not occur
 
-	  void Instructions::addReg() {
+	  void Instructions::addReg(byte regSource, byte regDestination) {
+
 	}
 
 	//8XY5	Subtract the value of register VY from register VX
 	//Set VF to 00 if a borrow occurs
 	//Set VF to 01 if a borrow does not occur
 
-	  void Instructions::subReg() {
+	  void Instructions::subReg(byte regSource, byte regDestination) {
+
 	}
 
 	//8XY6	Store the value of register VY shifted right one bit in register VX
 	//Set register VF to the least significant bit prior to the shift
 
 
-	  void Instructions::shiftRight() {
+	  void Instructions::shiftRight(byte reg) {
+
 	}
 
 	//8XY7	Set register VX to the value of VY minus VX
 	//Set VF to 00 if a borrow occurs
 	//Set VF to 01 if a borrow does not occur
 
-	  void Instructions::subRegStore() {
+	  void Instructions::subRegStore(byte regSource, byte regDestination) {
+
 	}
 
 	//8XYE	Store the value of register VY shifted left one bit in register VX
 	//Set register VF to the most significant bit prior to the shift
 
-	  void Instructions::shiftLeft() {
+	  void Instructions::shiftLeft(byte reg) {
 	}
 
 	//9XY0	Skip the following instruction if the value of register VX is not equal to the value of register VY
 
-	  void Instructions::skipNotEqualReg() {
+	  void Instructions::skipNotEqualReg(byte regSource, byte regDestination) {
 	}
 
 	//ANNN	Store memory address NNN in register I
@@ -130,11 +148,11 @@ Instructions::Instructions(Memory* chip8Memory,  Register* chip8Registers) {
 
 	//BNNN	Jump to address NNN + V0
 
-	  void Instructions::jumpAdd() {
+	  void Instructions::jumpAdd(byte constant) {
 	}
 	//CXNN	Set VX to a random number with a mask of NN
 
-	  void Instructions::random() {
+	  void Instructions::random(byte reg) {
 	}
 
 	//DXYN	Draw a sprite at position VX, VY with N bytes of sprite data starting at the address stored in I
@@ -167,17 +185,17 @@ Instructions::Instructions(Memory* chip8Memory,  Register* chip8Registers) {
 
 	//FX15	Set the delay timer to the value of register VX
 
-	  void Instructions::setDelay() {
+	  void Instructions::setDelay(byte reg) {
 	}
 
 	//FX18	Set the sound timer to the value of register VX
 
-	  void Instructions::setTimer() {
+	  void Instructions::setTimer(byte reg) {
 	}
 
 	//FX1E	Add the value stored in register VX to register I
 
-	  void Instructions::addToI() {
+	  void Instructions::addToI(byte reg) {
 	}
 
 	//FX29	Set I to the memory address of the sprite data corresponding to the hexadecimal digit stored in register VX
